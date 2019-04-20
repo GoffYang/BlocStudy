@@ -15,6 +15,11 @@ class SimpleBlocDelegate extends BlocDelegate {
     super.onTransition(transition);
     print(transition);
   }
+  @override
+  void onError(Object error, StackTrace stacktrace) {
+    super.onError(error, stacktrace);
+    print(error);
+  }
 }
 
 void main() {

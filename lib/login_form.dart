@@ -30,9 +30,9 @@ class _LoginFormState extends State<LoginForm> {
     return BlocBuilder<LoginEvent, LoginState>(
       bloc: _loginBloc,
       builder: (
-          BuildContext context,
-          LoginState state,
-          ) {
+        BuildContext context,
+        LoginState state,
+      ) {
         if (state is LoginFailure) {
           _onWidgetDidBuild(() {
             Scaffold.of(context).showSnackBar(
@@ -58,12 +58,12 @@ class _LoginFormState extends State<LoginForm> {
               ),
               RaisedButton(
                 onPressed:
-                state is! LoginLoading ? _onLoginButtonPressed : null,
+                    state is! LoginLoading ? _onLoginButtonPressed : null,
                 child: Text('Login'),
               ),
               Container(
                 child:
-                state is LoginLoading ? CircularProgressIndicator() : null,
+                    state is LoginLoading ? CircularProgressIndicator() : null,
               ),
             ],
           ),

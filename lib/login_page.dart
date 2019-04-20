@@ -30,7 +30,9 @@ class _LoginPageState extends State<LoginPage> {
         title: Text('Login'),
       ),
       body: LoginForm(
-          loginBloc: _loginBloc, authenticationBloc: _authenticationBloc),
+        loginBloc: _loginBloc,
+        authenticationBloc: _authenticationBloc,
+      ),
     );
   }
 
@@ -38,8 +40,14 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     _authenticationBloc = BlocProvider.of<AuthenticationBloc>(context);
     _loginBloc = LoginBloc(
-        userRepository: _userRepository,
-        authenticationBloc: _authenticationBloc);
+      userRepository: _userRepository,
+      authenticationBloc: _authenticationBloc,
+    );
     super.initState();
+  }
+  @override
+  void dispose() {
+    _loginBloc.dispose();
+    super.dispose();
   }
 }
